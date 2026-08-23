@@ -37,14 +37,15 @@ export function ContactForm() {
     const telefono = String(data.get("telefono") ?? "").trim();
     const descripcion = String(data.get("descripcion") ?? "").trim();
 
-    if (nombre.length < 2) nuevos.nombre = "Cuéntanos tu nombre.";
+    if (nombre.length < 2) nuevos["nombre"] = "Cuéntanos tu nombre.";
     if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(email))
-      nuevos.email = "Introduce un correo electrónico válido.";
+      nuevos["email"] = "Introduce un correo electrónico válido.";
     if (!/^[+\d][\d\s().-]{7,}$/.test(telefono))
-      nuevos.telefono = "Introduce un teléfono de contacto válido.";
+      nuevos["telefono"] = "Introduce un teléfono de contacto válido.";
     if (descripcion.length < 10)
-      nuevos.descripcion = "Describe tu idea con un poco más de detalle.";
-    if (!privacidad) nuevos.privacidad = "Debes aceptar la política de privacidad.";
+      nuevos["descripcion"] = "Describe tu idea con un poco más de detalle.";
+    if (!privacidad) nuevos["privacidad"] = "Debes aceptar la política de privacidad.";
+
 
     setErrores(nuevos);
     if (Object.keys(nuevos).length > 0) {

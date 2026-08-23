@@ -1,24 +1,60 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  Hero,
+  Presentacion,
+  Categorias,
+  Proceso,
+  Eventos,
+  CtaBanner,
+  SobreNosotros,
+  Testimonios,
+  Faq,
+} from "@/components/site/Sections";
+import { Gallery } from "@/components/site/Gallery";
+import { Reveal } from "@/components/site/Reveal";
+import { SectionTitle } from "@/components/site/Decor";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Sueña y Celebra | Productos personalizados para eventos";
+const description =
+  "Descubre productos personalizados para cumpleaños, comuniones, bautizos, bodas y eventos. Grabado láser, sublimación, bolsas de chuches y detalles únicos.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <Presentacion />
+      <Categorias />
+      <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
+        <Reveal>
+          <SectionTitle
+            eyebrow="Galería"
+            script="Una pequeña"
+            title="muestra de todo lo que podemos crear"
+            text="Cada producto nace de una idea y se convierte en un detalle pensado especialmente para ti."
+          />
+        </Reveal>
+        <div className="mt-12">
+          <Gallery />
+        </div>
+      </section>
+      <Proceso />
+      <Eventos />
+      <CtaBanner />
+      <SobreNosotros />
+      <Testimonios />
+      <Faq />
+    </>
   );
 }

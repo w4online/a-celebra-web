@@ -10,10 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
 import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as EventosRouteImport } from './routes/eventos'
 import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as PrivacidadRouteImport } from './routes/privacidad'
 import { Route as ProductosRouteImport } from './routes/productos'
 
 const IndexRoute = IndexRouteImport.update({
@@ -21,9 +24,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AvisoLegalRoute = AvisoLegalRouteImport.update({
+  id: '/aviso-legal',
+  path: '/aviso-legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactoRoute = ContactoRouteImport.update({
   id: '/contacto',
   path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EventosRoute = EventosRouteImport.update({
@@ -41,6 +54,11 @@ const NosotrosRoute = NosotrosRouteImport.update({
   path: '/nosotros',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacidadRoute = PrivacidadRouteImport.update({
+  id: '/privacidad',
+  path: '/privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductosRoute = ProductosRouteImport.update({
   id: '/productos',
   path: '/productos',
@@ -49,51 +67,83 @@ const ProductosRoute = ProductosRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aviso-legal': typeof AvisoLegalRoute
   '/contacto': typeof ContactoRoute
+  '/cookies': typeof CookiesRoute
   '/eventos': typeof EventosRoute
   '/galeria': typeof GaleriaRoute
   '/nosotros': typeof NosotrosRoute
+  '/privacidad': typeof PrivacidadRoute
   '/productos': typeof ProductosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aviso-legal': typeof AvisoLegalRoute
   '/contacto': typeof ContactoRoute
+  '/cookies': typeof CookiesRoute
   '/eventos': typeof EventosRoute
   '/galeria': typeof GaleriaRoute
   '/nosotros': typeof NosotrosRoute
+  '/privacidad': typeof PrivacidadRoute
   '/productos': typeof ProductosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aviso-legal': typeof AvisoLegalRoute
   '/contacto': typeof ContactoRoute
+  '/cookies': typeof CookiesRoute
   '/eventos': typeof EventosRoute
   '/galeria': typeof GaleriaRoute
   '/nosotros': typeof NosotrosRoute
+  '/privacidad': typeof PrivacidadRoute
   '/productos': typeof ProductosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/contacto' | '/eventos' | '/galeria' | '/nosotros' | '/productos'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contacto' | '/eventos' | '/galeria' | '/nosotros' | '/productos'
-  id:
-    | '__root__'
     | '/'
+    | '/aviso-legal'
     | '/contacto'
+    | '/cookies'
     | '/eventos'
     | '/galeria'
     | '/nosotros'
+    | '/privacidad'
+    | '/productos'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/aviso-legal'
+    | '/contacto'
+    | '/cookies'
+    | '/eventos'
+    | '/galeria'
+    | '/nosotros'
+    | '/privacidad'
+    | '/productos'
+  id:
+    | '__root__'
+    | '/'
+    | '/aviso-legal'
+    | '/contacto'
+    | '/cookies'
+    | '/eventos'
+    | '/galeria'
+    | '/nosotros'
+    | '/privacidad'
     | '/productos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AvisoLegalRoute: typeof AvisoLegalRoute
   ContactoRoute: typeof ContactoRoute
+  CookiesRoute: typeof CookiesRoute
   EventosRoute: typeof EventosRoute
   GaleriaRoute: typeof GaleriaRoute
   NosotrosRoute: typeof NosotrosRoute
+  PrivacidadRoute: typeof PrivacidadRoute
   ProductosRoute: typeof ProductosRoute
 }
 
@@ -106,11 +156,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aviso-legal': {
+      id: '/aviso-legal'
+      path: '/aviso-legal'
+      fullPath: '/aviso-legal'
+      preLoaderRoute: typeof AvisoLegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contacto': {
       id: '/contacto'
       path: '/contacto'
       fullPath: '/contacto'
       preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/eventos': {
@@ -134,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NosotrosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacidad': {
+      id: '/privacidad'
+      path: '/privacidad'
+      fullPath: '/privacidad'
+      preLoaderRoute: typeof PrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/productos': {
       id: '/productos'
       path: '/productos'
@@ -146,10 +217,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AvisoLegalRoute: AvisoLegalRoute,
   ContactoRoute: ContactoRoute,
+  CookiesRoute: CookiesRoute,
   EventosRoute: EventosRoute,
   GaleriaRoute: GaleriaRoute,
   NosotrosRoute: NosotrosRoute,
+  PrivacidadRoute: PrivacidadRoute,
   ProductosRoute: ProductosRoute,
 }
 export const routeTree = rootRouteImport

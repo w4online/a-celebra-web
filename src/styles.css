@@ -65,9 +65,9 @@
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-script: "Parisienne", "Cormorant Garamond", cursive;
 
-  --shadow-soft: 0 2px 10px -4px oklch(0.42 0.09 340 / 0.14);
-  --shadow-card: 0 18px 40px -24px oklch(0.42 0.09 340 / 0.28);
-  --shadow-lift: 0 30px 60px -28px oklch(0.42 0.09 340 / 0.34);
+  --shadow-soft: 0 1px 2px -1px oklch(0.42 0.09 340 / 0.08), 0 8px 24px -18px oklch(0.42 0.09 340 / 0.18);
+  --shadow-card: 0 2px 4px -2px oklch(0.42 0.09 340 / 0.08), 0 22px 48px -28px oklch(0.42 0.09 340 / 0.24);
+  --shadow-lift: 0 4px 8px -4px oklch(0.42 0.09 340 / 0.1), 0 40px 70px -34px oklch(0.42 0.09 340 / 0.3);
 }
 
 :root {
@@ -192,18 +192,36 @@
   box-shadow: var(--shadow-card);
 }
 
+@utility section {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+@utility hairline {
+  border-top: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+}
+
+@utility bg-veil {
+  background-image: linear-gradient(
+    to top,
+    oklch(0.3 0.055 340 / 0.72) 0%,
+    oklch(0.3 0.055 340 / 0.28) 42%,
+    transparent 78%
+  );
+}
+
 @utility eyebrow {
   font-size: 0.72rem;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   font-weight: 500;
-  color: var(--muted-foreground);
+  color: color-mix(in oklab, var(--primary) 62%, transparent);
 }
 
 @keyframes rise-in {
   from {
     opacity: 0;
-    transform: translateY(22px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -234,7 +252,7 @@
 }
 
 @utility animate-rise {
-  animation: rise-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @utility animate-float {
@@ -247,10 +265,10 @@
 
 @utility reveal {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(16px);
   transition:
-    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @utility reveal-visible {

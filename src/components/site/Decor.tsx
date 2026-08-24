@@ -31,12 +31,19 @@ export function SectionTitle({
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
-      <h2 className="mt-3 text-3xl leading-tight sm:text-4xl md:text-[2.7rem]">
-        {script ? <span className="font-script pr-2 text-[1.5em]">{script}</span> : null}
+      <h2 className="mt-3 text-[2rem] leading-tight sm:text-4xl md:text-[2.7rem]">
+        {script ? <span className="font-script pr-2 text-[1.45em]">{script}</span> : null}
         {title}
       </h2>
+      <span
+        aria-hidden="true"
+        className={cn(
+          "mt-5 block h-px w-16 bg-[linear-gradient(to_right,transparent,var(--gold),transparent)]",
+          align === "center" && "mx-auto",
+        )}
+      />
       {text ? (
-        <p className="mt-4 text-[0.98rem] leading-relaxed text-muted-foreground">{text}</p>
+        <p className="mt-5 text-[0.98rem] leading-relaxed text-muted-foreground">{text}</p>
       ) : null}
     </div>
   );

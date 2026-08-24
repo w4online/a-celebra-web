@@ -154,7 +154,7 @@ export function Categorias() {
             <Reveal as="li" key={c.slug} delay={(i % 3) * 80} className="h-full">
               <article
                 id={c.slug}
-                className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border/50 bg-card shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:border-border hover:shadow-[var(--shadow-lift)]"
+                className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/50 bg-card shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:border-border hover:shadow-[var(--shadow-lift)]"
               >
                 <div className="relative aspect-[5/4] overflow-hidden">
                   <img

@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect, useCallback } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import { galeria, galeriaCategorias, type GaleriaCategoria } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
@@ -48,7 +48,7 @@ export function Gallery() {
       <div
         role="tablist"
         aria-label="Filtrar galería por categoría"
-        className="flex flex-wrap justify-center gap-2"
+        className="-mx-5 flex snap-x gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0"
       >
         {galeriaCategorias.map((cat) => {
           const activo = cat === filtro;
@@ -62,10 +62,10 @@ export function Gallery() {
                 setAbierto(null);
               }}
               className={cn(
-                "cursor-pointer rounded-full border px-4 py-2 text-[0.78rem] tracking-wide transition-all duration-300",
+                "shrink-0 cursor-pointer snap-start rounded-full border px-4 py-2 text-[0.76rem] uppercase tracking-[0.14em] transition-all duration-300",
                 activo
                   ? "border-transparent bg-primary text-primary-foreground shadow-[var(--shadow-soft)]"
-                  : "border-border bg-card/70 text-muted-foreground hover:-translate-y-0.5 hover:text-primary",
+                  : "border-border/70 bg-card text-muted-foreground hover:-translate-y-0.5 hover:border-border hover:text-primary",
               )}
             >
               {cat}
@@ -74,12 +74,12 @@ export function Gallery() {
         })}
       </div>
 
-      <div className="mt-10 grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid auto-rows-auto grid-cols-1 gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {items.map((item, i) => (
-          <Reveal key={item.id} delay={(i % 6) * 70} className={cn(spanClass[item.span])}>
+          <Reveal key={item.id} delay={(i % 6) * 50} className={cn(spanClass[item.span])}>
             <button
               onClick={() => setAbierto(i)}
-              className="group relative size-full cursor-pointer overflow-hidden rounded-3xl bg-secondary/40 text-left shadow-[var(--shadow-soft)] transition-all duration-500 hover:shadow-[var(--shadow-lift)]"
+              className="group relative size-full cursor-pointer overflow-hidden rounded-[1.5rem] bg-secondary/30 text-left shadow-[var(--shadow-soft)] transition-all duration-300 hover:shadow-[var(--shadow-lift)] sm:rounded-3xl"
               aria-label={`Ampliar fotografía: ${item.titulo}`}
             >
               <img
@@ -87,14 +87,20 @@ export function Gallery() {
                 alt={item.alt}
                 loading="lazy"
                 decoding="async"
-                className="size-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
+                className="size-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
               />
-              <span className="absolute inset-0 bg-[linear-gradient(to_top,oklch(0.33_0.062_340_/_0.62),transparent_55%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              <span className="absolute inset-x-0 bottom-0 translate-y-3 p-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <span
+                aria-hidden="true"
+                className="bg-veil absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+              <span className="absolute right-4 top-4 grid size-9 place-items-center rounded-full bg-card/90 text-primary opacity-0 shadow-[var(--shadow-soft)] transition-all duration-300 group-hover:opacity-100">
+                <Expand className="size-4" />
+              </span>
+              <span className="absolute inset-x-0 bottom-0 translate-y-2 p-5 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                 <span className="block font-serif text-lg text-primary-foreground">
                   {item.titulo}
                 </span>
-                <span className="mt-1 block text-[0.7rem] uppercase tracking-[0.22em] text-primary-foreground/80">
+                <span className="mt-1 block text-[0.68rem] uppercase tracking-[0.22em] text-primary-foreground/80">
                   {item.categoria}
                 </span>
               </span>
@@ -108,23 +114,23 @@ export function Gallery() {
           role="dialog"
           aria-modal="true"
           aria-label={actual.titulo}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-[oklch(0.33_0.062_340_/_0.78)] p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-[oklch(0.3_0.055_340_/_0.82)] p-4 backdrop-blur-md"
           onClick={cerrar}
         >
           <div
-            className="relative w-full max-w-4xl animate-rise"
+            className="animate-rise relative w-full max-w-4xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="overflow-hidden rounded-3xl bg-card shadow-[var(--shadow-lift)]">
               <img
                 src={actual.imagen}
                 alt={actual.alt}
-                className="max-h-[70vh] w-full bg-secondary/40 object-contain"
+                className="max-h-[68vh] w-full bg-secondary/30 object-contain"
               />
-              <div className="flex items-center justify-between gap-4 px-6 py-5">
+              <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-6 sm:py-5">
                 <div>
                   <p className="font-serif text-xl text-primary">{actual.titulo}</p>
-                  <p className="mt-1 text-[0.7rem] uppercase tracking-[0.22em] text-muted-foreground">
+                  <p className="mt-1 text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
                     {actual.categoria}
                   </p>
                 </div>
@@ -137,21 +143,21 @@ export function Gallery() {
             <button
               onClick={cerrar}
               aria-label="Cerrar imagen"
-              className="absolute -top-4 right-0 grid size-11 cursor-pointer place-items-center rounded-full bg-card text-primary shadow-[var(--shadow-card)] transition-transform hover:scale-105 sm:-right-4"
+              className="absolute -top-4 right-0 grid size-11 cursor-pointer place-items-center rounded-full bg-card text-primary shadow-[var(--shadow-card)] transition-transform duration-200 hover:scale-105 sm:-right-4"
             >
               <X className="size-5" />
             </button>
             <button
               onClick={() => mover(-1)}
               aria-label="Imagen anterior"
-              className="absolute left-2 top-1/2 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-card/90 text-primary shadow-[var(--shadow-card)] transition-transform hover:scale-105 sm:-left-16"
+              className="absolute left-2 top-1/2 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-card/90 text-primary shadow-[var(--shadow-card)] transition-transform duration-200 hover:scale-105 sm:-left-16"
             >
               <ChevronLeft className="size-5" />
             </button>
             <button
               onClick={() => mover(1)}
               aria-label="Imagen siguiente"
-              className="absolute right-2 top-1/2 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-card/90 text-primary shadow-[var(--shadow-card)] transition-transform hover:scale-105 sm:-right-16"
+              className="absolute right-2 top-1/2 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-card/90 text-primary shadow-[var(--shadow-card)] transition-transform duration-200 hover:scale-105 sm:-right-16"
             >
               <ChevronRight className="size-5" />
             </button>

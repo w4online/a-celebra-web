@@ -1,4 +1,5 @@
 import { Star, Sparkles, Moon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 /** Estrellas, lunas y destellos sutiles de fondo. Decorativo, sin semántica. */
 export function Decor() {

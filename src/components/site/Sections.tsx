@@ -35,7 +35,7 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-20 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div className="animate-rise text-center lg:text-left">
           <p className="eyebrow">Detalles personalizados · Celebraciones únicas</p>
-          <h1 className="mt-5 text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.2rem]">
+          <h1 className="mt-5 text-[2.1rem] leading-[1.04] sm:text-5xl md:text-6xl lg:text-[4rem]">
             <span className="font-script block text-[1.2em] leading-[0.85] text-primary">
               Haz realidad
             </span>

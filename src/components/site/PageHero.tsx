@@ -12,11 +12,11 @@ export function PageHero({
   text?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-dream py-20 sm:py-24">
+    <section className="relative overflow-hidden bg-dream py-16 sm:py-24">
       <Decor />
       <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
         <p className="eyebrow animate-rise">{eyebrow}</p>
-        <h1 className="animate-rise mt-4 text-4xl leading-[1.08] sm:text-5xl">
+        <h1 className="animate-rise mt-4 text-[2.4rem] leading-[1.05] sm:text-5xl">
           {script ? (
             <span className="font-script block text-[1.3em] leading-[0.9] text-primary">
               {script}
@@ -25,7 +25,7 @@ export function PageHero({
           {title}
         </h1>
         {text ? (
-          <p className="animate-rise mt-6 text-[1.02rem] leading-relaxed text-muted-foreground [animation-delay:120ms]">
+          <p className="animate-rise mt-6 text-[1rem] leading-relaxed text-muted-foreground [animation-delay:100ms]">
             {text}
           </p>
         ) : null}

@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
 
 const spanClass = {
-  tall: "sm:row-span-2 aspect-[3/4]",
-  wide: "sm:col-span-2 aspect-[4/3]",
+  tall: "aspect-[3/4]",
+  wide: "aspect-[4/3]",
   square: "aspect-square",
 } as const;
 
@@ -74,9 +74,11 @@ export function Gallery() {
         })}
       </div>
 
-      <div className="mt-8 grid auto-rows-auto grid-cols-1 gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+      <div className="mt-8 gap-3 [column-fill:balance] sm:mt-10 sm:gap-4 sm:columns-2 lg:columns-3">
         {items.map((item, i) => (
-          <Reveal key={item.id} delay={(i % 6) * 50} className={cn(spanClass[item.span])}>
+          <Reveal key={item.id} delay={(i % 6) * 50}
+            className={cn("mb-3 break-inside-avoid sm:mb-4", spanClass[item.span])}
+          >
             <button
               onClick={() => setAbierto(i)}
               className="group relative size-full cursor-pointer overflow-hidden rounded-[1.5rem] bg-secondary/30 text-left shadow-[var(--shadow-soft)] transition-all duration-300 hover:shadow-[var(--shadow-lift)] sm:rounded-3xl"

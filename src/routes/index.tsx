@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import {
   Hero,
   Presentacion,
@@ -47,6 +48,11 @@ function Index() {
         </Reveal>
         <div className="mt-10 sm:mt-14">
           <Gallery />
+        </div>
+        <div className="mt-12 text-center">
+          <Button asChild size="lg" variant="outline">
+            <Link to="/galeria">Ver galería completa</Link>
+          </Button>
         </div>
       </section>
       <Proceso />

@@ -36,7 +36,7 @@ function Index() {
       <Hero />
       <Presentacion />
       <Categorias />
-      <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
+      <section id="galeria" className="mx-auto max-w-[86rem] px-5 py-20 sm:px-8 sm:py-28">
         <Reveal>
           <SectionTitle
             eyebrow="Galería"
@@ -45,7 +45,7 @@ function Index() {
             text="Cada producto nace de una idea y se convierte en un detalle pensado especialmente para ti."
           />
         </Reveal>
-        <div className="mt-12">
+        <div className="mt-10 sm:mt-14">
           <Gallery />
         </div>
       </section>

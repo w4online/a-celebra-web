@@ -31,9 +31,9 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-all duration-500",
+        "sticky top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-border/70 bg-background/85 backdrop-blur-xl"
+          ? "border-b border-border/60 bg-background/90 shadow-[var(--shadow-soft)] backdrop-blur-xl"
           : "bg-transparent",
       )}
     >
@@ -73,7 +73,7 @@ export function Header() {
 
       <div
         className={cn(
-          "overflow-hidden border-border/70 bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-500 lg:hidden",
+          "overflow-hidden border-border/70 bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 lg:hidden",
           open ? "max-h-96 border-b opacity-100" : "max-h-0 opacity-0",
         )}
       >
